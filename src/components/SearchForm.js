@@ -3,7 +3,7 @@ import React from 'react';
 
 class SearchForm extends React.Component{
     state = {
-        'text':''
+        text:''
     }
 
     handleChange = (e)=>{
@@ -15,6 +15,7 @@ class SearchForm extends React.Component{
     handleSubmit = (e)=>{
         e.preventDefault();
         this.props.onSearch(this.state.text)
+        this.props.history.push("/");
         e.currentTarget.reset()
     }
 

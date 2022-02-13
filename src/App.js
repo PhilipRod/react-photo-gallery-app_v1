@@ -36,7 +36,7 @@ componentDidMount(){
 searchPhotos = (query) => {
   
   this.setState({
-    query:this.state.query
+    query
   })
 
   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
@@ -70,7 +70,7 @@ searchPhotos = (query) => {
       }
     
       
-    })
+    }).catch( (error)=> console.log('error fetching data',error))
      
 }
 
@@ -79,7 +79,12 @@ render(){
    return(
     <BrowserRouter>
       <div className="App">
-        <SearchForm onSearch = {this.searchPhotos}/>
+       <Route
+          path="/"
+          render={(routeProps) => (
+            <SearchForm {...routeProps} onSearch={this.searchPhotos} />
+          )}
+        />
         <Nav />
         
         {this.state.loading ? 'Loading...' :
@@ -89,7 +94,7 @@ render(){
             <Route path="/dogs" render={()=> <Results photos = {this.state.dogs} />} />
             <Route path="/birds" render={()=> <Results photos = {this.state.birds}/>} />
 
-            <Route Component= {NotFound} />
+            <Route render={ ()=> <NotFound /> } />
           </Switch>
         }
       </div>

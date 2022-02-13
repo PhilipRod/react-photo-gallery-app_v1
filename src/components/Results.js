@@ -8,11 +8,10 @@ class Results extends React.Component{
 
     render(){
         const pics = this.props.photos;        
-        
 
         return(
         <div className="photo-container">
-            <h2>Results</h2>
+            <h2>Results </h2>
             <ul>
                 
                 {
