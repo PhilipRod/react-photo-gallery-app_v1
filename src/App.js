@@ -93,6 +93,7 @@ render(){
             <Route path="/cats" render={()=> <Results photos = {this.state.cats} />} />
             <Route path="/dogs" render={()=> <Results photos = {this.state.dogs} />} />
             <Route path="/birds" render={()=> <Results photos = {this.state.birds}/>} />
+            <Route path="/search/:query" render={()=> <Results photos = {this.state.photo}/>} />
 
             <Route render={ ()=> <NotFound /> } />
           </Switch>
