@@ -15,7 +15,7 @@ class SearchForm extends React.Component{
     handleSubmit = (e)=>{
         e.preventDefault();
         this.props.onSearch(this.state.text)
-        this.props.history.push("/");
+        this.props.history.push(`/search/${this.state.text}`);
         e.currentTarget.reset()
     }
 
